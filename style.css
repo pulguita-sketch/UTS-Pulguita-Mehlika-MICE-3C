@@ -1,0 +1,304 @@
+/* ==========================================================
+   SOUTO — Sign In Page
+   Warna diambil dari logo: hijau zaitun #799956 & kuning #FFEE1A
+   Rasio kontras (WCAG 2.2 AA) tertulis di samping tiap token.
+   ========================================================== */
+
+:root {
+  --green-900: #233516;   /* teks utama di atas putih      ≈ 14:1  */
+  --green-700: #3F5B25;   /* tombol utama + link           ≈ 7.7:1 (putih di atasnya) */
+  --green-600: #4F7030;
+  --green-500: #799956;   /* hijau logo (dekoratif)        */
+  --yellow-500: #FFEE1A;  /* kuning logo (dekoratif)       */
+  --yellow-100: #FFF8D6;
+  --muted: #556048;       /* teks sekunder di atas putih   ≈ 6.6:1 */
+  --border: #6F7A62;      /* border input                  ≈ 4.5:1 (min. 3:1) */
+  --white: #FFFFFF;
+
+  --font-head: "Fredoka", "Trebuchet MS", system-ui, sans-serif;
+  --font-body: "Nunito", system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
+
+  --radius: 14px;
+  --focus: 0 0 0 3px var(--yellow-500), 0 0 0 5px var(--green-900);
+}
+
+/* ---------- Reset & Box Model ---------- */
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  min-height: 100vh;
+  min-height: 100dvh;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.5;
+  color: var(--green-900);
+  background: var(--white);
+}
+img { display: block; max-width: 100%; }
+button, input { font: inherit; color: inherit; }
+
+/* ---------- Utilitas Aksesibilitas ---------- */
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: 1rem;
+  z-index: 100;
+  padding: .6rem 1rem;
+  background: var(--green-900);
+  color: var(--white);
+  border-radius: 0 0 var(--radius) var(--radius);
+  text-decoration: none;
+  font-weight: 700;
+}
+.skip-link:focus { top: 0; }
+
+:focus-visible { outline: 3px solid var(--green-900); outline-offset: 3px; }
+
+/* ---------- Layout (Mobile-First) ---------- */
+.auth {
+  display: flex;
+  flex-direction: column;       /* artwork menumpuk di atas formulir */
+  min-height: 100vh;
+  min-height: 100dvh;
+}
+
+/* ---------- Kolom Artwork ---------- */
+.auth__art {
+  position: relative;
+  height: 170px;
+  overflow: hidden;
+  background: linear-gradient(135deg, #2C4419, #4F7030);
+}
+.auth__art-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 100%;
+}
+.auth__tagline { display: none; }   /* disembunyikan di layar kecil */
+
+/* ---------- Kolom Formulir ---------- */
+.auth__panel {
+  position: relative;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 1.25rem 1.25rem 2rem;
+  background: var(--white);
+}
+.auth__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+.auth__brand { display: inline-block; border-radius: 12px; }
+.auth__brand img { width: 96px; height: auto; }
+.auth__switch { margin: 0; font-size: .9375rem; color: var(--muted); text-align: right; }
+
+.auth__content {
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+}
+.auth__title {
+  margin: 0 0 1.5rem;
+  font-family: var(--font-head);
+  font-weight: 600;
+  font-size: 1.75rem;
+  line-height: 1.2;
+  letter-spacing: -.01em;
+}
+.auth__legal {
+  margin: 1.5rem 0 0;
+  font-size: .875rem;
+  line-height: 1.5;
+  color: var(--muted);
+}
+
+/* ---------- Link ---------- */
+.link {
+  color: var(--green-700);
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.link:hover { color: var(--green-900); }
+.link--small { font-size: .9375rem; }
+
+/* ---------- Tombol ---------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: .65rem;
+  width: 100%;
+  min-height: 52px;
+  padding: .75rem 1.25rem;
+  border: 2px solid transparent;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color .15s ease, transform .1s ease, box-shadow .15s ease;
+}
+.btn:focus-visible { outline: none; box-shadow: var(--focus); }
+.btn:active { transform: scale(.98); }
+
+.btn--google {
+  background: var(--white);
+  color: var(--green-900);
+  border-color: var(--border);
+}
+.btn--google:hover { background: var(--yellow-100); }
+
+.btn--primary {
+  margin-top: 1.5rem;
+  background: var(--green-700);
+  color: var(--white);
+}
+.btn--primary:hover { background: var(--green-900); }
+
+/* ---------- Pemisah "or" ---------- */
+.divider {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin: 1.5rem 0;
+  color: var(--muted);
+  font-size: .9375rem;
+}
+.divider::before, .divider::after {
+  content: "";
+  flex: 1;
+  height: 2px;
+  background: #D3DAC8;
+  border-radius: 2px;
+}
+
+/* ---------- Field ---------- */
+.field { margin-bottom: 1.25rem; }
+.field__row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+}
+.field__label {
+  display: block;
+  margin-bottom: .4rem;
+  font-weight: 700;
+  font-size: 1rem;
+}
+.field__control { position: relative; }
+
+.field__input {
+  display: block;
+  width: 100%;
+  min-height: 52px;
+  padding: .75rem 1rem;
+  background: var(--white);
+  border: 2px solid var(--border);
+  border-radius: var(--radius);
+  transition: border-color .15s ease, box-shadow .15s ease;
+}
+.field__input--icon { padding-right: 3.5rem; }
+.field__input:hover { border-color: var(--green-700); }
+.field__input:focus { outline: none; border-color: var(--green-900); box-shadow: var(--focus); }
+.field__input:user-invalid { border-color: #B3261E; }  /* merah ≈ 6.5:1 */
+
+/* Tombol ikon (mata) — posisi absolut di dalam input */
+.field__toggle {
+  position: absolute;
+  top: 50%;
+  right: .5rem;
+  transform: translateY(-50%);
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  background: transparent;
+  border: 0;
+  border-radius: 50%;
+  color: var(--muted);
+  cursor: pointer;
+}
+.field__toggle:hover { background: var(--yellow-100); color: var(--green-900); }
+.field__toggle:focus-visible { outline: none; box-shadow: var(--focus); }
+.icon-eye__slash { opacity: 0; }
+.field__toggle.is-on .icon-eye__slash { opacity: 1; }
+
+/* ---------- Checkbox ---------- */
+.check { display: flex; align-items: center; gap: .65rem; }
+.check__input {
+  flex: none;
+  width: 22px;
+  height: 22px;
+  margin: 0;
+  accent-color: var(--green-700);
+  cursor: pointer;
+}
+.check__label { cursor: pointer; }
+
+/* ==========================================================
+   Tablet (≥ 768px)
+   ========================================================== */
+@media (min-width: 768px) {
+  .auth__art { height: 260px; }
+  .auth__panel { padding: 1.75rem 2.5rem 3rem; }
+  .auth__brand img { width: 120px; }
+  .auth__title { font-size: 2rem; }
+}
+
+/* ==========================================================
+   Desktop (≥ 1024px) — Split-Screen
+   ========================================================== */
+@media (min-width: 1024px) {
+  .auth { display: grid; grid-template-columns: 1fr 1fr; }
+
+  .auth__art { height: auto; min-height: 100vh; min-height: 100dvh; }
+  .auth__art-img { object-position: 50% 100%; }
+
+  /* teks sambutan di atas gradasi hijau (putih di atas #3F5B25–#4F7030 ≈ 5.7–7.7:1) */
+  .auth__tagline {
+    position: absolute;
+    top: 24%;
+    left: 3.5rem;
+    right: 3.5rem;
+    display: block;
+    max-width: 30rem;
+    color: var(--white);
+  }
+  .auth__tagline-title {
+    margin: 0 0 1rem;
+    font-family: var(--font-head);
+    font-weight: 600;
+    font-size: clamp(2.5rem, 4vw, 3.5rem);
+    line-height: 1.1;
+    letter-spacing: -.01em;
+  }
+  .auth__tagline-text { margin: 0; font-size: 1.125rem; line-height: 1.65; }
+
+  .auth__panel {
+    justify-content: center;
+    padding: 3rem 4rem;
+  }
+  /* logo di kiri-atas, link sign up di kanan-atas */
+  .auth__header {
+    position: absolute;
+    top: 2rem;
+    left: 3rem;
+    right: 3rem;
+    margin: 0;
+  }
+}
+
+/* ---------- Preferensi gerak berkurang ---------- */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { transition: none !important; animation: none !important; }
+}

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sign in to Souto</title>
+  <meta name="description" content="Sign in to your Souto account.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" href="img/logo-souto.png" type="image/png">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <a class="skip-link" href="#signin-form">Skip to sign in form</a>
+
+  <main class="auth">
+
+    <!-- Kolom kiri: artwork branding -->
+    <section class="auth__art" aria-labelledby="art-title">
+      <img class="auth__art-img" src="img/artwork.svg" alt="">
+      <div class="auth__tagline">
+        <h2 class="auth__tagline-title" id="art-title">Welcome to Souto</h2>
+        <p class="auth__tagline-text">
+          Good to see you again! Sign in to pick up right where you left off,
+          because every little sprout deserves a place to grow.
+        </p>
+      </div>
+    </section>
+
+    <!-- Kolom kanan: formulir login -->
+    <section class="auth__panel" aria-labelledby="form-title">
+      <header class="auth__header">
+        <a class="auth__brand" href="#" aria-label="Souto home">
+          <img src="img/logo-souto.png" alt="Souto" width="120" height="56">
+        </a>
+        <p class="auth__switch">Not a member? <a class="link" href="#">Sign up now</a></p>
+      </header>
+
+      <div class="auth__content">
+        <h1 class="auth__title" id="form-title">Sign in to Souto</h1>
+
+        <button class="btn btn--google" type="button" aria-label="Sign in with Google">
+          <svg class="btn__icon" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false">
+            <path fill="#4285F4" d="M23.5 12.27c0-.85-.08-1.67-.22-2.45H12v4.64h6.45a5.52 5.52 0 0 1-2.39 3.62v3h3.86c2.26-2.08 3.58-5.15 3.58-8.81Z"/>
+            <path fill="#34A853" d="M12 24c3.24 0 5.95-1.07 7.93-2.91l-3.86-3c-1.07.72-2.44 1.15-4.07 1.15-3.13 0-5.78-2.11-6.73-4.96H1.29v3.09A12 12 0 0 0 12 24Z"/>
+            <path fill="#FBBC05" d="M5.27 14.28a7.2 7.2 0 0 1 0-4.56V6.63H1.29a12 12 0 0 0 0 10.74l3.98-3.09Z"/>
+            <path fill="#EA4335" d="M12 4.76c1.76 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0A12 12 0 0 0 1.29 6.63l3.98 3.09C6.22 6.87 8.87 4.76 12 4.76Z"/>
+          </svg>
+          <span>Sign in with Google</span>
+        </button>
+
+        <div class="divider" role="separator"><span>or</span></div>
+
+        <form class="form" id="signin-form" action="#" method="post">
+          <div class="field">
+            <label class="field__label" for="identity">Username or Email</label>
+            <input class="field__input" type="text" id="identity" name="identity"
+                   autocomplete="username" required>
+          </div>
+
+          <div class="field">
+            <div class="field__row">
+              <label class="field__label" for="password">Password</label>
+              <a class="link link--small" href="#">Forgot Password?</a>
+            </div>
+            <div class="field__control">
+              <input class="field__input field__input--icon" type="password" id="password" name="password"
+                     autocomplete="current-password" required>
+              <button class="field__toggle" type="button" id="toggle-password"
+                      aria-label="Show password" aria-pressed="false" aria-controls="password">
+                <svg class="icon-eye" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false">
+                  <path d="M1.5 12S5.5 5 12 5s10.5 7 10.5 7-4 7-10.5 7S1.5 12 1.5 12Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+                  <circle cx="12" cy="12" r="3.2" fill="none" stroke="currentColor" stroke-width="2"/>
+                  <line class="icon-eye__slash" x1="4" y1="20" x2="20" y2="4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <div class="check">
+            <input class="check__input" type="checkbox" id="remember" name="remember">
+            <label class="check__label" for="remember">Remember Me</label>
+          </div>
+
+          <button class="btn btn--primary" type="submit">Sign In</button>
+        </form>
+
+        <p class="auth__legal">
+          This site is protected by Souto's <a class="link" href="#">Terms of Service</a>
+          and <a class="link" href="#">Privacy Policy</a>.
+        </p>
+      </div>
+    </section>
+
+  </main>
+</body>
+</html>
